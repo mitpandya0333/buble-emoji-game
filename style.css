@@ -1,0 +1,6 @@
+.countainer {
+  width: 300px;
+  height: 500px;
+  border: 1px solid black;
+  position: relative;
+}
