@@ -11,30 +11,34 @@ function uptodown() {
   let bottomValue = 0;
   emoji.style.bottom = bottomValue + "px";
 
-  emoji.addEventListener("click", function () {
+  function scoreIncrement() {
     score = score + 1;
     scoreEl.innerText = score;
     console.log("score", score);
 
     emoji.remove();
     clearInterval(interval);
-  });
+  }
+
+  emoji.addEventListener("click", scoreIncrement);
 
   card.appendChild(emoji);
 
-  let interval = setInterval(function () {
+  function bottomValueConditionChecker() {
     if (bottomValue > 480) {
       clearInterval(interval);
       emoji.remove();
     }
     bottomValue = bottomValue + 5;
     emoji.style.bottom = bottomValue + "px";
-  }, 70);
+  }
+
+  let interval = setInterval(bottomValueConditionChecker, 70);
 }
 
 function startGame() {
   stop = setInterval(uptodown, 3000);
 }
-function freeze() {
+function stopGame() {
   clearInterval(stop);
 }
